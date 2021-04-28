@@ -1,0 +1,10 @@
+<% if @stock %>
+  <div class="alert alert-success alert-dismissible">
+    <strong>Symbol: </strong><%= @stock.ticker %><br>
+    <strong>Company Name: </strong><%= @stock.name %><br>
+    <strong>Price: </strong><%= @stock.last_price %><br>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
