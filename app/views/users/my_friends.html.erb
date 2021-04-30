@@ -1,4 +1,22 @@
 <h1 class="mt-4">Friends Page</h1>
-<% if !@my_friend.empty? %>
+<div class="search-area">
+  <h3>Search Friend</h3>
+  <%= form_tag search_friend_path, method: :get do %>
+    <div class="form-group row">
+      <div class="col-sm-9">
+        <%= text_field_tag :friend, params[:friend], placeholder: 'Enter Friend Name or Email', autofocus: true, class: 'form-control form-control-lg' %>
+      </div>
+      <div class="col-sm-3">
+        <%= button_tag type: :submit, class: 'btn btn-lg btn-success' do %>
+          <%= fa_icon "search" %><%= "Get Friends's details" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="friend-results">
+  <%= render 'friend_result' %>
+</div>
+<% if !@friends.empty? %>
   <%= render 'friends/friendslist' %>
 <% end %>

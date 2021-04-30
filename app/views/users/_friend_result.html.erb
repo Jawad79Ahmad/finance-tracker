@@ -1,0 +1,22 @@
+<%= render 'shared/messages' %>
+
+<% if @friend %>
+  <div class="alert alert-success alert-dismissible">
+    <% @friend.each do |f| %>
+      <strong>Name: </strong><%= f.full_name %><br>
+      <strong>Email: </strong><%= f.email %><br>
+      <strong>-----------------------------</strong>
+      <%= link_to 'View Profile', '#', class: 'badge badge-success' %>
+      <% if current_user.not_friend_with(f.id) %>
+        <%= link_to 'Follow Friend?', friendships_path(friend: f), method: :post, class: 'badge badge-primary' %>
+      <% else %>
+        <%= link_to 'Stop Following', friendship_path(f), class: 'badge badge-warning',
+            method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+      <br>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <% end %>
+  </div>
+<% end %>

@@ -12,7 +12,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <% if request.path != my_protfolio_path %>
+    <% if request.path != (my_protfolio_path || my_friends_path) %>
       <%= render 'shared/messages' %>
     <% end %>
     <div class="container">
